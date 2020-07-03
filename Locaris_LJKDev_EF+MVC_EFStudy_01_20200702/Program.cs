@@ -58,10 +58,19 @@ namespace Locaris_LJKDev_EF_MVC_EFStudy_01_20200702
             #endregion
 
             #region 04_02 linq查询操作
-            //linq表达式
-            var temp = from u in dbContext.User_Info//通过u遍历User_Info集合
+            //linq表达式的返回值的类型为IQueryable
+            IQueryable<User_Info> temp = from u in dbContext.User_Info//通过u遍历User_Info集合
                        where u.User_ID > 1060
                        select u;
+
+            IQueryable<object> parent = temp;     //把子类泛型集合交给父类的泛型集合，协变！！
+
+            //List<Object> listObject=listInt;   
+            Func<int, bool> delFunc;
+            Func<object, bool> delParent = a => { Console.WriteLine(a.ToString());
+                return true;
+            };
+            
 
             foreach (User_Info userInfo in temp)
             {
