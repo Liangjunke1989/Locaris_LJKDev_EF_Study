@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LJK_SQLServerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AreaFull">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AreaPid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Info">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="nchar" MaxLength="32" />
+          <Property Name="User_Gender" Type="bit" />
+          <Property Name="User_Age" Type="int" />
+          <Property Name="User_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Birthday" Type="datetime" />
+          <Property Name="User_Remark" Type="nvarchar(max)" />
+          <Property Name="User_Money" Type="money" />
+          <Property Name="User_GUIDDemo" Type="uniqueidentifier" />
+          <Property Name="User_Pwd" Type="int" />
+        </EntityType>
+        <EntityType Name="VIP_Info">
+          <Key>
+            <PropertyRef Name="VIP_ID" />
+          </Key>
+          <Property Name="VIP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIP_Name" Type="nchar" MaxLength="10" />
+          <Property Name="VIP_Age" Type="int" />
+          <Property Name="VIP_Gender" Type="bit" />
+          <Property Name="VIP_Adress" Type="nchar" MaxLength="10" />
+          <Property Name="VIP_Money" Type="money" />
+          <Property Name="VIP_Time" Type="time" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="LJK_SQLServerDBModelStoreContainer">
+          <EntitySet Name="AreaFull" EntityType="Self.AreaFull" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Info" EntityType="Self.User_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VIP_Info" EntityType="Self.VIP_Info" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LJK_SQLServerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AreaFull">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AreaPid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Info">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+          <Property Name="User_Gender" Type="Boolean" />
+          <Property Name="User_Age" Type="Int32" />
+          <Property Name="User_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Birthday" Type="DateTime" Precision="3" />
+          <Property Name="User_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Money" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="User_GUIDDemo" Type="Guid" />
+          <Property Name="User_Pwd" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VIP_Info">
+          <Key>
+            <PropertyRef Name="VIP_ID" />
+          </Key>
+          <Property Name="VIP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIP_Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="VIP_Age" Type="Int32" />
+          <Property Name="VIP_Gender" Type="Boolean" />
+          <Property Name="VIP_Adress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="VIP_Money" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VIP_Time" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="LJK_SQLServerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AreaFull" EntityType="Self.AreaFull" />
+          <EntitySet Name="User_Info" EntityType="Self.User_Info" />
+          <EntitySet Name="VIP_Info" EntityType="Self.VIP_Info" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LJK_SQLServerDBModelStoreContainer" CdmEntityContainer="LJK_SQLServerDBEntities">
+          <EntitySetMapping Name="AreaFull">
+            <EntityTypeMapping TypeName="LJK_SQLServerDBModel.AreaFull">
+              <MappingFragment StoreEntitySet="AreaFull">
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AreaPid" ColumnName="AreaPid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Info">
+            <EntityTypeMapping TypeName="LJK_SQLServerDBModel.User_Info">
+              <MappingFragment StoreEntitySet="User_Info">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Gender" ColumnName="User_Gender" />
+                <ScalarProperty Name="User_Age" ColumnName="User_Age" />
+                <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+                <ScalarProperty Name="User_Birthday" ColumnName="User_Birthday" />
+                <ScalarProperty Name="User_Remark" ColumnName="User_Remark" />
+                <ScalarProperty Name="User_Money" ColumnName="User_Money" />
+                <ScalarProperty Name="User_GUIDDemo" ColumnName="User_GUIDDemo" />
+                <ScalarProperty Name="User_Pwd" ColumnName="User_Pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIP_Info">
+            <EntityTypeMapping TypeName="LJK_SQLServerDBModel.VIP_Info">
+              <MappingFragment StoreEntitySet="VIP_Info">
+                <ScalarProperty Name="VIP_ID" ColumnName="VIP_ID" />
+                <ScalarProperty Name="VIP_Name" ColumnName="VIP_Name" />
+                <ScalarProperty Name="VIP_Age" ColumnName="VIP_Age" />
+                <ScalarProperty Name="VIP_Gender" ColumnName="VIP_Gender" />
+                <ScalarProperty Name="VIP_Adress" ColumnName="VIP_Adress" />
+                <ScalarProperty Name="VIP_Money" ColumnName="VIP_Money" />
+                <ScalarProperty Name="VIP_Time" ColumnName="VIP_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
